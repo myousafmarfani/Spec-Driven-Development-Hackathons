@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(C:\\Users\\imher\\Documents\\GitHub\\Spec-Driven-Development-Hackathons\\hackathon-0/**)",
+      "Read(C:\\Users\\imher\\Documents\\GitHub\\Spec-Driven-Development-Hackathons\\hackathon-0\\hackathon-0-gold-tier/**)",
+      "Read(C:\\Users\\imher\\Documents\\GitHub\\Spec-Driven-Development-Hackathons\\hackathon-0\\hackathon-0-silver-tier/**)",
+      "Bash(python *)",
+      "Bash(pip install *)",
+      "Bash(python)",
+      "Bash(import *)",
+      "Bash(pdf_path *)",
+      "Bash(doc *)",
+      "Bash(pdf_path)",
+      "Bash(print)",
+      "Bash(doc)",
+      "Bash(text *)",
+      "Bash(doc.close)",
+      "Bash(eof)",
+      "Bash(del *)"
+    ]
+  }
+}

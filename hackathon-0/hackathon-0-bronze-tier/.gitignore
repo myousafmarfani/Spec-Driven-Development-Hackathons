@@ -1,0 +1,76 @@
+# AI Employee - Bronze Tier
+# https://github.com/anthropics/skills
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Credentials
+credentials/
+*.pem
+*.key
+*.crt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+Vault/Logs/*.log
+Vault/Logs/*.jsonl
+*.log
+
+# PID files
+/tmp/ai_employee/*.pid
+
+# Obsidian
+Vault/.obsidian/
+
+# Test files
+Vault/Needs_Action/
+Vault/Plans/
+Vault/Pending_Approval/
+Vault/Approved/
+Vault/Rejected/
+Vault/Done/
+Vault/Invoices/
+
+# Keep these folders but ignore contents
+!Vault/Company_Handbook.md
+!Vault/Business_Goals.md
+!Vault/Dashboard.md
+!Vault/Contacts.md
+!README.md
