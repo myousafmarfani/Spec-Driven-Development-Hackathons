@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr:*)",
+      "Bash(.specify/scripts/powershell/setup-plan.ps1:*)",
+      "Bash(if [ -d \"specs/1-todo-app/checklists\" ])",
+      "Bash(then find specs/1-todo-app/checklists -type f -name \"*.md\")",
+      "Bash(else echo \"No checklists directory found\")",
+      "Bash(fi)",
+      "Bash(gh --version:*)",
+      "Bash(dir:*)"
+    ]
+  }
+}

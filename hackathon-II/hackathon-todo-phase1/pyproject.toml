@@ -1,0 +1,20 @@
+[project]
+name = "hackathon-todo-phase1"
+version = "1.0.0"
+description = "A console-based todo application with in-memory storage"
+authors = [
+    {name = "Muhammad Yousaf", email = "yousufhere.dev@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0",
+    "black>=22.0",
+    "flake8>=5.0",
+]
+
+[project.scripts]
+todo = "main:main"

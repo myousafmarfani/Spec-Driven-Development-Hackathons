@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python test_final_verification.py)",
+      "Bash(grep -n \"db\\|localhost\\|127.0.0.1\" backend/db.py backend/main.py backend/routes/*.py)",
+      "Bash(pip --version)",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(pip install -r requirements.txt)",
+      "Bash(uvicorn main:app --reload --host 0.0.0.0 --port 8000)",
+      "Bash(npm install)",
+      "Bash(npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:8000/docs)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:3000)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

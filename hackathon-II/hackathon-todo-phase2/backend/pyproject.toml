@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hackathon-todo-backend"
+version = "0.1.0"
+description = "Backend API for the Hackathon Todo Application"
+readme = "README.md"
+authors = [{name = "Developer", email = "dev@example.com"}]
+license = {text = "MIT"}
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "sqlmodel>=0.1.2",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.20",
+    "alembic>=1.14.0",
+    "psycopg2-binary>=2.9.9",
+    "python-dotenv>=1.0.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.4",
+    "httpx>=0.28.0",
+    "black>=24.10.0",
+    "flake8>=7.1.1",
+    "mypy>=1.13.0",
+    "isort>=5.13.2"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.uvicorn]
+host = "0.0.0.0"
+port = 8000
+reload = true
