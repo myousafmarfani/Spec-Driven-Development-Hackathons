@@ -1,19 +1,19 @@
 # Dashboard
 
-> **Last Updated:** {{TIMESTAMP}}  
-> **System Status:** {{STATUS}}
+> **Last Updated:** 2026-04-04T00:35:59.109015  
+> **System Status:** Running
 
 ---
 
 ## Quick Stats
 
-| Metric | Today | This Week | This Month |
-|--------|-------|-----------|------------|
-| Emails Processed | {{EMAIL_COUNT}} | {{WEEK_EMAIL_COUNT}} | {{MONTH_EMAIL_COUNT}} |
-| WhatsApp Messages | {{WA_COUNT}} | {{WEEK_WA_COUNT}} | {{MONTH_WA_COUNT}} |
-| Invoices Sent | {{INVOICE_COUNT}} | {{WEEK_INVOICE_COUNT}} | {{MONTH_INVOICE_COUNT}} |
-| Revenue | ${{REVENUE}} | ${{WEEK_REVENUE}} | ${{MONTH_REVENUE}} |
-| Pending Approvals | {{PENDING_COUNT}} | - | - |
+| Metric            | Today             | This Week              | This Month              |
+| ----------------- | ----------------- | ---------------------- | ----------------------- |
+| Emails Processed  | {{EMAIL_COUNT}}   | {{WEEK_EMAIL_COUNT}}   | {{MONTH_EMAIL_COUNT}}   |
+| WhatsApp Messages | {{WA_COUNT}}      | {{WEEK_WA_COUNT}}      | {{MONTH_WA_COUNT}}      |
+| Invoices Sent     | {{INVOICE_COUNT}} | {{WEEK_INVOICE_COUNT}} | {{MONTH_INVOICE_COUNT}} |
+| Revenue           | ${{REVENUE}}      | ${{WEEK_REVENUE}}      | ${{MONTH_REVENUE}}      |
+| Pending Approvals | 0 | -                      | -                       |
 
 ---
 
@@ -36,7 +36,7 @@
 ## Recent Activity
 
 <!-- Auto-populated by Orchestrator -->
-{{RECENT_ACTIVITY}}
+- No recent activity
 
 ---
 
@@ -64,7 +64,7 @@
 | Time | Event | Status |
 |------|-------|--------|
 | 08:00 | CEO Briefing | {{BRIEFING_STATUS}} |
-| {{TIME}} | {{EVENT}} | {{STATUS}} |
+| {{TIME}} | {{EVENT}} | Running |
 
 ---
 
@@ -74,7 +74,7 @@
 
 | Date | Description | Amount | Status |
 |------|-------------|--------|--------|
-| {{DATE}} | {{DESC}} | ${{AMOUNT}} | {{STATUS}} |
+| {{DATE}} | {{DESC}} | ${{AMOUNT}} | Running |
 
 **Total:** ${{MONTH_TOTAL}}
 
@@ -103,4 +103,4 @@
 
 ---
 
-*Dashboard auto-updates every 5 minutes. Last full refresh: {{LAST_REFRESH}}*
+*Dashboard auto-updates every 5 minutes. Last full refresh: 2026-04-04 00:35:59*

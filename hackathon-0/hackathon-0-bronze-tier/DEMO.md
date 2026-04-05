@@ -72,7 +72,7 @@ keyword:invoice
 
 ## Suggested Actions
 
-<!-- Claude Code will populate this -->
+<!-- Qwen Code will populate this -->
 
 ## Processing Log
 
@@ -82,7 +82,7 @@ keyword:invoice
 
 ---
 
-## Step 2: Reasoning (Orchestrator + Claude Code)
+## Step 2: Reasoning (Orchestrator + Qwen Code)
 
 ### Orchestrator Detects New File
 
@@ -94,12 +94,12 @@ python src/orchestrator.py
 **Orchestrator Log:**
 ```
 2026-01-07 10:30:30 [INFO] Processing: WHATSAPP_client_a_20260107_103000.md
-2026-01-07 10:30:30 [INFO] Invoking Claude Code for: WHATSAPP_client_a_20260107_103000.md
+2026-01-07 10:30:30 [INFO] Invoking Qwen Code for: WHATSAPP_client_a_20260107_103000.md
 ```
 
-### Claude Code Analyzes
+### Qwen Code Analyzes
 
-Claude Code reads the action file and creates a plan:
+Qwen Code reads the action file and creates a plan:
 
 **File:** `Vault/Plans/PLAN_WHATSAPP_client_a_20260107_103000.md`
 
@@ -337,7 +337,7 @@ mv Vault/Plans/PLAN_*.md Vault/Done/
 | 10:30:05 | WhatsApp Watcher detects trigger |
 | 10:30:10 | Action file created in Needs_Action |
 | 10:30:30 | Orchestrator picks up action |
-| 10:30:35 | Claude Code creates plan |
+| 10:30:35 | Qwen Code creates plan |
 | 10:30:40 | Approval request created |
 | 10:35:00 | Human approves (moves to Approved) |
 | 10:35:05 | Orchestrator detects approval |
@@ -415,12 +415,12 @@ cat Vault/Logs/$(date +%Y-%m-%d).jsonl
 2. Verify WhatsApp Web is logged in
 3. Check watcher logs: `cat Vault/Logs/*.log | grep whatsapp`
 
-### Issue: Claude Code Not Available
+### Issue: Qwen Code Not Available
 
 **Solution:**
-1. Install: `npm install -g @anthropic/claude-code`
-2. Configure: `claude` (run interactive setup)
-3. Test: `claude --version`
+1. Install Qwen Code
+2. Verify: `qwen --version`
+3. Test: `qwen --prompt "hello"`
 
 ### Issue: Email Not Sending
 

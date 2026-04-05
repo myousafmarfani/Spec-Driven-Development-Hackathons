@@ -6,34 +6,34 @@ Common issues and solutions for the AI Employee Bronze Tier.
 
 ## Setup Issues
 
-### Q: Claude Code says "command not found"
+### Q: Qwen Code says "command not found"
 
-**A:** Ensure Claude Code is installed globally:
+**A:** Ensure Qwen Code is installed:
 
 ```bash
-npm install -g @anthropic/claude-code
+npm install -g qwen-code
 
 # Verify installation
-claude --version
+qwen --version
 ```
 
 Restart your terminal after installation.
 
 ---
 
-### Q: Obsidian vault isn't being read by Claude
+### Q: Obsidian vault isn't being read by Qwen
 
 **A:** Check the following:
 
-1. Run Claude Code from the vault directory:
+1. Run Qwen Code from the vault directory:
    ```bash
    cd hackathon-0-bronze-tier
-   claude --prompt "..."
+   qwen --prompt "..."
    ```
 
 2. Or use the `--cwd` flag:
    ```bash
-   claude --cwd ./Vault --prompt "..."
+   qwen --cwd ./Vault --prompt "..."
    ```
 
 3. Verify file permissions allow read access.
@@ -95,7 +95,7 @@ pm2 startup
 
 ---
 
-### Q: Claude is making incorrect decisions
+### Q: Qwen is making incorrect decisions
 
 **A:** Review and update your `Company_Handbook.md`:
 
@@ -167,7 +167,7 @@ git log -p | grep -i "password\|secret\|token"
 
 ---
 
-### Q: What if Claude tries to pay the wrong person?
+### Q: What if Qwen tries to pay the wrong person?
 
 **A:** This is why HITL is critical:
 

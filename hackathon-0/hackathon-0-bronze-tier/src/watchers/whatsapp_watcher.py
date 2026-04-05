@@ -167,7 +167,7 @@ status: pending
 
 ## Suggested Actions
 
-<!-- Claude Code will populate this -->
+<!-- Qwen Code will populate this -->
 
 ## Processing Log
 

@@ -18,6 +18,5 @@
       "Bash(eof)",
       "Bash(del *)"
     ]
-  },
-  "$version": 3
+  }
 }

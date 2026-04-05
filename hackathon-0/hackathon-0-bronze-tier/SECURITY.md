@@ -211,7 +211,7 @@ When components fail:
 
 1. **Gmail API down**: Queue emails locally
 2. **Banking API timeout**: Never retry payments automatically
-3. **Claude Code unavailable**: Queue for later processing
+3. **Qwen Code unavailable**: Queue for later processing
 4. **Obsidian vault locked**: Write to temp folder
 
 ### Retry Logic

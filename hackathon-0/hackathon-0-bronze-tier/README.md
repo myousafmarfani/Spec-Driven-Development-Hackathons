@@ -2,7 +2,7 @@
 
 > **Tagline:** Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.
 
-A **Digital FTE (Full-Time Equivalent)** - an AI agent that works 24/7 to manage your personal and business affairs using Claude Code as the reasoning engine and Obsidian as the local dashboard.
+A **Digital FTE (Full-Time Equivalent)** - an AI agent that works 24/7 to manage your personal and business affairs using Qwen Code as the reasoning engine and Obsidian as the local dashboard.
 
 ## Architecture Overview
 
@@ -11,7 +11,7 @@ A **Digital FTE (Full-Time Equivalent)** - an AI agent that works 24/7 to manage
 │                    PERSONAL AI EMPLOYEE                      │
 └─────────────────────────────────────────────────────────────┘
 
-External Sources → Watchers → Obsidian Vault → Claude Code → MCP Servers → Actions
+External Sources → Watchers → Obsidian Vault → Qwen Code → MCP Servers → Actions
    (Gmail,           (Python    (Local         (Reasoning    (Email,       (Send Email,
     WhatsApp,        Scripts)    Markdown)      Engine)       Browser)       Post Social)
     Bank, Files)
@@ -23,7 +23,7 @@ External Sources → Watchers → Obsidian Vault → Claude Code → MCP Servers
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| **Brain** | Claude Code | Reasoning engine |
+| **Brain** | Qwen Code | Reasoning engine |
 | **Memory/GUI** | Obsidian | Local Markdown dashboard |
 | **Senses** | Python Watchers | Monitor Gmail, WhatsApp, filesystem |
 | **Hands** | MCP Servers | External actions (email, browser) |
@@ -35,7 +35,7 @@ External Sources → Watchers → Obsidian Vault → Claude Code → MCP Servers
 
 - **Python 3.13+**
 - **Node.js v24+ LTS**
-- **Claude Code** (Pro or Free tier)
+- **Qwen Code**
 - **Obsidian v1.10.6+**
 - **Git**
 
@@ -65,8 +65,9 @@ cp .env.example .env
 ```
 hackathon-0-bronze-tier/
 ├── Vault/                      # Obsidian vault (local-first knowledge base)
+│   ├── Inbox/                  # Raw captures, notes, quick entries
 │   ├── Needs_Action/           # Incoming triggers from watchers
-│   ├── Plans/                  # Claude-generated action plans
+│   ├── Plans/                  # Qwen-generated action plans
 │   ├── Pending_Approval/       # Awaiting human approval
 │   ├── Approved/               # Ready for execution
 │   ├── Rejected/               # Declined actions
@@ -126,7 +127,7 @@ Every action is logged for review:
 {
   "timestamp": "2026-01-07T10:30:00Z",
   "action_type": "email_send",
-  "actor": "claude_code",
+  "actor": "qwen_code",
   "target": "client@example.com",
   "approval_status": "approved",
   "result": "success"
@@ -157,7 +158,7 @@ pm2 startup
 
 1. **Detection**: WhatsApp Watcher detects "send invoice" message
 2. **Create**: `/Vault/Needs_Action/WHATSAPP_client_2026-01-07.md`
-3. **Plan**: Claude creates `/Vault/Plans/PLAN_invoice_client.md`
+3. **Plan**: Qwen creates `/Vault/Plans/PLAN_invoice_client.md`
 4. **Approve**: You review and move to `/Approved/`
 5. **Action**: Email MCP sends invoice
 6. **Log**: Transaction recorded in `/Vault/Logs/`
@@ -199,7 +200,7 @@ MIT License - See LICENSE file for details.
 
 ## Resources
 
-- [Claude Code Documentation](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows)
+- [Qwen Code Documentation](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows)
 - [MCP Introduction](https://modelcontextprotocol.io/introduction)
 - [Obsidian Help](https://help.obsidian.md/Getting+started)
 - [Playwright Docs](https://playwright.dev/python/docs/intro)

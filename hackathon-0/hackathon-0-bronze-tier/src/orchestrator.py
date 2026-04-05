@@ -3,7 +3,7 @@ Orchestrator - Master process for the AI Employee system.
 
 The Orchestrator:
 1. Monitors Needs_Action folder for new tasks
-2. Invokes Claude Code to analyze and create plans
+2. Invokes Qwen Code to analyze and create plans
 3. Manages Human-in-the-Loop approval workflow
 4. Executes approved actions via MCP servers
 5. Updates Dashboard with activity
@@ -49,28 +49,28 @@ class Orchestrator:
     def __init__(self, dry_run: bool = False):
         self.dry_run = dry_run
         self.processing_files: set = set()
-        self.claude_available = self._check_claude_code()
+        self.qwen_available = self._check_qwen_code()
         
         # Ensure all directories exist
         for path in [NEEDS_ACTION_PATH, PLANS_PATH, PENDING_APPROVAL_PATH, 
                      APPROVED_PATH, REJECTED_PATH, DONE_PATH, LOGS_PATH]:
             path.mkdir(parents=True, exist_ok=True)
     
-    def _check_claude_code(self) -> bool:
-        """Check if Claude Code is available."""
+    def _check_qwen_code(self) -> bool:
+        """Check if Qwen Code is available."""
         try:
             result = subprocess.run(
-                ['claude', '--version'],
+                ['qwen', '--version'],
                 capture_output=True,
                 text=True,
                 timeout=10
             )
             if result.returncode == 0:
-                logger.info(f"Claude Code available: {result.stdout.strip()}")
+                logger.info(f"Qwen Code available: {result.stdout.strip()}")
                 return True
         except (subprocess.TimeoutExpired, FileNotFoundError) as e:
-            logger.warning(f"Claude Code not available: {e}")
-            logger.warning("Install with: npm install -g @anthropic/claude-code")
+            logger.warning(f"Qwen Code not available: {e}")
+            logger.warning("Install Qwen Code to enable AI reasoning")
         return False
     
     def _get_pending_files(self) -> List[Path]:
@@ -103,28 +103,28 @@ class Orchestrator:
         content = filepath.read_text()
         return 'processed_at:' in content
     
-    def _invoke_claude(self, input_file: Path) -> Optional[Path]:
+    def _invoke_qwen(self, input_file: Path) -> Optional[Path]:
         """
-        Invoke Claude Code to analyze input and create plan.
-        
+        Invoke Qwen Code to analyze input and create plan.
+
         Returns path to plan file if successful.
         """
-        logger.info(f"Invoking Claude Code for: {input_file.name}")
-        
+        logger.info(f"Invoking Qwen Code for: {input_file.name}")
+
         # Create plan file path
         plan_filename = f"PLAN_{input_file.stem}.md"
         plan_path = PLANS_PATH / plan_filename
-        
+
         if self.dry_run:
-            logger.info(f"[DRY RUN] Would invoke Claude for: {input_file.name}")
+            logger.info(f"[DRY RUN] Would invoke Qwen Code for: {input_file.name}")
             return None
-        
-        if not self.claude_available:
-            logger.error("Claude Code not available")
+
+        if not self.qwen_available:
+            logger.error("Qwen Code not available")
             return None
-        
-        # Build Claude Code command
-        # This uses Claude Code CLI to analyze the file and create a plan
+
+        # Build Qwen Code command
+        # This uses Qwen Code CLI to analyze the file and create a plan
         prompt = f"""
 Analyze this action file and create a detailed plan:
 
@@ -155,39 +155,39 @@ objective: [clear objective]
 ## Approval Required
 [List any actions requiring human approval]
 """
-        
+
         try:
             result = subprocess.run(
-                ['claude', '--prompt', prompt],
+                ['qwen', '--prompt', prompt],
                 capture_output=True,
                 text=True,
                 timeout=300  # 5 minute timeout
             )
-            
+
             if result.returncode == 0:
-                logger.info(f"Claude Code completed analysis")
-                
-                # If Claude didn't create the file, create a basic plan
+                logger.info(f"Qwen Code completed analysis")
+
+                # If Qwen didn't create the file, create a basic plan
                 if not plan_path.exists():
                     self._create_basic_plan(input_file, plan_path)
-                
+
                 return plan_path
             else:
-                logger.error(f"Claude Code error: {result.stderr}")
+                logger.error(f"Qwen Code error: {result.stderr}")
                 self._create_basic_plan(input_file, plan_path)
                 return plan_path
-                
+
         except subprocess.TimeoutExpired:
-            logger.error("Claude Code timed out")
+            logger.error("Qwen Code timed out")
             self._create_basic_plan(input_file, plan_path)
             return plan_path
         except Exception as e:
-            logger.error(f"Error invoking Claude Code: {e}")
+            logger.error(f"Error invoking Qwen Code: {e}")
             self._create_basic_plan(input_file, plan_path)
             return plan_path
     
     def _create_basic_plan(self, input_file: Path, plan_path: Path):
-        """Create a basic plan if Claude is unavailable."""
+        """Create a basic plan if Qwen is unavailable."""
         content = input_file.read_text()
         
         # Extract metadata from frontmatter
@@ -426,8 +426,8 @@ status: pending
             self.processing_files.add(input_file)
             
             try:
-                # Invoke Claude to create plan
-                plan_file = self._invoke_claude(input_file)
+                # Invoke Qwen to create plan
+                plan_file = self._invoke_qwen(input_file)
                 
                 if plan_file:
                     # Create approval request
@@ -463,7 +463,7 @@ status: pending
         logger.info("AI Employee Orchestrator Starting...")
         logger.info(f"Vault: {VAULT_PATH}")
         logger.info(f"Dry Run: {self.dry_run}")
-        logger.info(f"Claude Code: {'Available' if self.claude_available else 'Not Available'}")
+        logger.info(f"Qwen Code: {'Available' if self.qwen_available else 'Not Available'}")
         logger.info("=" * 50)
         
         try:

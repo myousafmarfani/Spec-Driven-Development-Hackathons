@@ -135,7 +135,7 @@ def log_action(log_path: Path, action_type: str, **kwargs):
     }
     
     # Append to daily log file
-    log_file = log_path / f"{datetime.now().strftime('%Y-%m-%d')}.jsonl'
+    log_file = log_path / f"{datetime.now().strftime('%Y-%m-%d')}.jsonl"
     
     with open(log_file, 'a', encoding='utf-8') as f:
         f.write(json.dumps(log_entry) + '\n')
